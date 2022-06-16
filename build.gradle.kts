@@ -16,15 +16,19 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
 
+// TODO clean up build.gradle!
 dependencies {
     testImplementation(kotlin("test"))
     implementation(compose.desktop.currentOs)
 
+    // rx?
     implementation("io.reactivex.rxjava3:rxjava:3.1.3")
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
 
-    testImplementation("org.jetbrains.kotlin:kotlin-test:1.6.0")
+    // serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
 
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.6.0")
     testImplementation("org.amshove.kluent:kluent:1.68")
 
     // look here for resources:
@@ -39,6 +43,13 @@ dependencies {
     // GPU support for tensor calculation (nvidia only)
     api("org.tensorflow:libtensorflow:1.15.0")
     api("org.tensorflow:libtensorflow_jni_gpu:1.15.0")
+
+    val koin_version = "3.1.5"
+    // Koin Core features
+    implementation("io.insert-koin:koin-core:$koin_version")
+// Koin Test features
+    testImplementation("io.insert-koin:koin-test:$koin_version")
+
 
 }
 
